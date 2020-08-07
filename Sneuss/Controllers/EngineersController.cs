@@ -38,5 +38,16 @@ namespace Sneuss.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Details(int id)
+    {
+      var thisEngineer = _db.Engineers
+      .Include(eng => eng.Machines)
+      .ThenInclude(join => join.Machine)
+      .FirstOrDefault(eng => eng.EngineerId == id);
+      return View(thisEngineer);
+    }
+
+    
   }
 }
