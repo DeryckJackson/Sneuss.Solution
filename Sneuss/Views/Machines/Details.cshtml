@@ -19,16 +19,17 @@ else
 {
   <h4>Engineers that can work on me:</h4>
   <ul>
-  @* @foreach(var join in Model.Machines)
+  @foreach(var join in Model.Engineers)
   {
-    <li>@join.Machine.Name</li>
-    @using (Html.BeginForm("DeleteMachine", "Engineers"))
+    <li>@join.Engineer.Name</li>
+    @using (Html.BeginForm("DeleteEngineer", "Engineers"))
     {
     @Html.Hidden("joinId", @join.EngineerMachineId)
-    <input type="submit" value="Delete"/>
+    <input class="btn btn-danger" type="submit" value="Delete"/>
     }
-  } *@
+  }
   </ul>
 }
 
+<input type="button" class="btn btn-primary" value="Add Engineer" onclick="location.href='@Url.Action("AddEngineer", "Machines", new { id = Model.MachineId })'" /><br>
 <input type="button" class="btn btn-primary" value="Back to Machine List" onclick="location.href='@Url.Action("Index", "Machines")'" />
