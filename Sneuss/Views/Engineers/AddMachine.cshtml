@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Sneuss.Models.Engineer
+
+<h1 class="jumbotron">Add a Machine License</h1>
+
+<h4>Add a Machine License to this Engineer: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EngineerId)
+
+  @Html.Label("Select Machine")
+  @Html.DropDownList("MachineId")
+
+  <input class="btn btn-success" type="submit" value="Add" />
+}
+
+<input type="button" class="btn btn-primary" value="Back to Engineer List" onclick="location.href='@Url.Action("Index", "Engineers")'" />

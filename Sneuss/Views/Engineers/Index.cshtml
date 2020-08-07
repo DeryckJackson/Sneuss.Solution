@@ -26,10 +26,6 @@
       <tr>
       <td>@eng.Name </td>
       <td>@eng.Details</td>
-      @* @foreach(var join in eng.Machines)
-      {
-      <td>@join.Machine.Name</td>
-      } *@
       <td>@Html.ActionLink("Edit", "Edit", new { id = eng.EngineerId })  |  @Html.ActionLink("Details", "Details", new { id = eng.EngineerId}) | @Html.ActionLink("Delete", "Delete", new { id = eng.EngineerId})</td>
       </tr>
     }

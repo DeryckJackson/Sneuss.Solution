@@ -41,10 +41,10 @@ namespace Sneuss.Controllers
 
     public ActionResult Details(int id)
     {
-      var thisEngineer = _db.Engineers
-      .Include(eng => eng.Machines)
-      .ThenInclude(join => join.Machine)
-      .FirstOrDefault(eng => eng.EngineerId == id);
+      Engineer thisEngineer = _db.Engineers
+        .Include(eng => eng.Machines)
+        .ThenInclude(join => join.Machine)
+        .FirstOrDefault(eng => eng.EngineerId == id);
       return View(thisEngineer);
     }
 
@@ -74,6 +74,33 @@ namespace Sneuss.Controllers
     { 
       Engineer thisEngineer = _db.Engineers.FirstOrDefault(eng => eng.EngineerId == id);
       _db.Engineers.Remove(thisEngineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult AddMachine(int id)
+    {
+      Engineer thisEngineer = _db.Engineers.FirstOrDefault(eng => eng.EngineerId == id);
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
+      return View(thisEngineer);
+    }
+
+    [HttpPost]
+    public ActionResult AddMachine(Machine mach, int EngineerId)
+    {
+      if (EngineerId != 0)
+      {
+        _db.EngineerMachine.Add(new EngineerMachine() {EngineerId = EngineerId, MachineId = mach.MachineId});
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteMachine(int joinId)
+    {
+      var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
+      _db.EngineerMachine.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

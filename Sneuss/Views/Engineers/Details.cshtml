@@ -4,7 +4,7 @@
 @using Sneuss.Models;
 @model Sneuss.Models.Engineer;
 
-<h2 class="jumbotron">Engineer Details</h2>
+<h1 class="jumbotron">Engineer Details</h1>
 <hr/>
 <h4>Name: @Html.DisplayFor(model => model.Name)</h4>
 <hr/>
@@ -19,7 +19,7 @@ else
 {
   <h4>Machines licensed on:</h4>
   <ul>
-  @* @foreach(var join in Model.Machines)
+  @foreach(var join in Model.Machines)
   {
     <li>@join.Machine.Name</li>
     @using (Html.BeginForm("DeleteMachine", "Engineers"))
@@ -27,8 +27,9 @@ else
     @Html.Hidden("joinId", @join.EngineerMachineId)
     <input type="submit" value="Delete"/>
     }
-  } *@
+  }
   </ul>
 }
 
+<input type="button" class="btn btn-primary" value="Add Machine License" onclick="location.href='@Url.Action("AddMachine", "Engineers", new { id = Model.EngineerId })'" /><br>
 <input type="button" class="btn btn-primary" value="Back to Engineer List" onclick="location.href='@Url.Action("Index", "Engineers")'" />
