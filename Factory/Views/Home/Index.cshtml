@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Sneuss.Models;
+
+<h1 class="jumbotron text-center"> Welcome to the Factory</h1>
+
+<input type="button" class="btn btn-primary" value="View Engineers" onclick="location.href='@Url.Action("Index", "Engineers")'" />
+<input type="button" class="btn btn-primary" value="View Machines" onclick="location.href='@Url.Action("Index", "Machines")'" />
+
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Details</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach(Engineer eng in ViewBag.Engineers) 
+    {
+      <tr>
+      <td>@eng.Name </td>
+      <td>@eng.Details</td>
+      <td>Engineer</td>
+      <td>@Html.ActionLink("Edit", "Edit", "Engineers", new { id = eng.EngineerId })  |  @Html.ActionLink("Details", "Details", "Engineers", new { id = eng.EngineerId}) | @Html.ActionLink("Delete", "Delete", "Engineers", new { id = eng.EngineerId})</td>
+      </tr>
+    }
+    @foreach(Machine mach in ViewBag.Machines) 
+    {
+      <tr>
+      <td>@mach.Name </td>
+      <td>@mach.Details</td>
+      <td>Machine</td>
+      <td>@Html.ActionLink("Edit", "Edit", "Machines", new { id = mach.MachineId })  |  @Html.ActionLink("Details", "Details", "Machines", new { id = mach.MachineId}) | @Html.ActionLink("Delete", "Delete", "Machines", new { id = mach.MachineId})</td>
+      </tr>
+    }
+  </tbody>
+</table> 
