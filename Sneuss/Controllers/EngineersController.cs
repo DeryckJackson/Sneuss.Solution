@@ -26,5 +26,17 @@ namespace Sneuss.Controllers
       return View(model);
     }
 
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Engineer eng)
+    {
+      _db.Engineers.Add(eng);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
