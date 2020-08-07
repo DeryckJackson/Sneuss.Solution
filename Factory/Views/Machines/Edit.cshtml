@@ -17,6 +17,15 @@ Layout = "_Layout";
     @Html.LabelFor(model => model.Details)
     @Html.TextBoxFor(model => model.Details, new { @class = "form-control"})<br>
   </div>
+  <p>Status:</p>
+  <div class="form-check">
+    @Html.RadioButtonFor(model => model.Status, "Operational", new { @class="form-check-input" })
+    @Html.Label("one", "Operational", new { @class = "form-check-label" })<br>
+    @Html.RadioButtonFor(model => model.Status, "Malfunctioning", new { @class = "form-check-input" })
+    @Html.Label("two", "Malfunctioning", new { @class = "form-check-label" })<br>
+    @Html.RadioButtonFor(model => model.Status, "Being Repaired", new { @class = "form-check-input" })
+    @Html.Label("three", "Being Repaired", new { @class = "form-check-label" })<br>
+  </div>
   <input type="submit" class="btn btn-primary" value="Save" />
 }
 

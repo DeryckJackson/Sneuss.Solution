@@ -11,6 +11,7 @@ namespace Sneuss.Models
     public int MachineId {get;set;}
     public string Name {get;set;}
     public string Details {get;set;}
+    public string Status {get;set;} = "Operational";
     public ICollection<EngineerMachine> Engineers {get;}
   }
 }
