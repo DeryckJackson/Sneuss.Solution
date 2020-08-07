@@ -4,11 +4,9 @@
 
 @using Sneuss.Models;
 
-<h1 class="jumbotron text-center"> Welcome to the Factory</h1>
+<h1 class="jumbotron text-center">Welcome to the Factory</h1>
 
-<input type="button" class="btn btn-primary" value="View Engineers" onclick="location.href='@Url.Action("Index", "Engineers")'" />
-<input type="button" class="btn btn-primary" value="View Machines" onclick="location.href='@Url.Action("Index", "Machines")'" />
-
+<h2>Engineers and Machines</h2>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
@@ -38,4 +36,7 @@
       </tr>
     }
   </tbody>
-</table> 
+</table>
+
+<input type="button" class="btn btn-primary" value="View Engineers" onclick="location.href='@Url.Action("Index", "Engineers")'" />
+<input type="button" class="btn btn-primary" value="View Machines" onclick="location.href='@Url.Action("Index", "Machines")'" />

@@ -6,7 +6,7 @@
 
 ## Description
 
-A website for tracking which engineers are licensed to repair which machines
+A website for tracking which engineers are licensed to repair which machines and vice versa
 
 ## User Stories
 
