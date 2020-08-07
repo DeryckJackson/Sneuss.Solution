@@ -48,6 +48,19 @@ namespace Sneuss.Controllers
       return View(thisEngineer);
     }
 
-    
+    public ActionResult Edit (int id)
+    {
+      var thisEngineer = _db.Engineers.FirstOrDefault(eng => eng.EngineerId == id);
+      ViewBag.CourseId = new SelectList(_db.Machines, "MachineId", "Name");
+      return View(thisEngineer);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Engineer eng)
+    {
+      _db.Entry(eng).State = EntityState.Modified; 
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
