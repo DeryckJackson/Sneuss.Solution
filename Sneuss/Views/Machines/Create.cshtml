@@ -1,0 +1,23 @@
+@{
+  Layout ="_Layout";
+}
+
+@model Sneuss.Models.Machine
+
+<h2 class="jumbotron">Add a new Engineer</h4>
+
+
+@using (Html.BeginForm())
+{
+  <div class="form-group">
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control"})
+  </div>
+  <div class="form-group">
+    @Html.LabelFor(model => model.Details)
+    @Html.TextBoxFor(model => model.Details, new { @class = "form-control"})<br>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Add" />
+}
+
+<input type="button" class="btn btn-primary" value="Back to Machine List" onclick="location.href='@Url.Action("Index", "Machines")'" />
