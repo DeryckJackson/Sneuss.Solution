@@ -44,5 +44,35 @@ namespace Sneuss.Controllers
       return View(thisMachine);
     }
 
+    public ActionResult Edit (int id)
+    {
+      Machine thisMachine = _db.Machines.FirstOrDefault(mach => mach.MachineId == id);
+      ViewBag.Engineers = new SelectList(_db.Machines, "EngineerId", "Name");
+      return View(thisMachine);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Machine mach)
+    {
+      _db.Entry(mach).State = EntityState.Modified; 
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      Machine thisMachine = _db.Machines.FirstOrDefault(mach => mach.MachineId == id);
+      return View(thisMachine);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    { 
+      Machine thisMachine = _db.Machines.FirstOrDefault(mach => mach.MachineId == id);
+      _db.Machines.Remove(thisMachine);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }

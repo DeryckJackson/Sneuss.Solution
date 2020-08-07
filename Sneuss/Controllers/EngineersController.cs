@@ -51,7 +51,7 @@ namespace Sneuss.Controllers
     public ActionResult Edit (int id)
     {
       var thisEngineer = _db.Engineers.FirstOrDefault(eng => eng.EngineerId == id);
-      ViewBag.CourseId = new SelectList(_db.Machines, "MachineId", "Name");
+      ViewBag.Machines = new SelectList(_db.Machines, "MachineId", "Name");
       return View(thisEngineer);
     }
 

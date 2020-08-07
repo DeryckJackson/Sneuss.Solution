@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Sneuss.Models.Machine
+
+<h2 class="jumbotron">Delete Machine</h2>
+
+<p>Are you sure you want to delete this Machine?</p>
+
+
+<p>Name: @Html.DisplayFor(model => model.Name)</p>
+@using (Html.BeginForm())
+{
+  <input type="submit" class="btn btn-danger" value="Delete" />
+}
+
+<input type="button" class="btn btn-primary" value="Back to Engineer List" onclick="location.href='@Url.Action("Index", "Machines")'" />
