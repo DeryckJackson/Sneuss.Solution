@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Dynamic;
+using System;
 
 namespace Sneuss.Controllers
 {
@@ -88,11 +89,11 @@ namespace Sneuss.Controllers
     [HttpPost]
     public ActionResult AddMachine(Machine mach, int EngineerId)
     {
-      if (EngineerId != 0)
+      if (EngineerId != 0 && mach.MachineId != 0)
       {
         _db.EngineerMachine.Add(new EngineerMachine() {EngineerId = EngineerId, MachineId = mach.MachineId});
+        _db.SaveChanges();
       }
-      _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
